@@ -12,7 +12,14 @@ if it places, you claim the reward to your own Solana wallet.
 >
 > My referral code is `2558h6eb`.
 
-This guide walks you from zero to your first submitted entry.
+This guide walks you from zero to your first submitted entry. It is written for someone who has never
+entered a bounty before and does not want to learn the rules by getting rejected: every step below is
+something you can do in order, and every command is copy-pasteable.
+
+Two honest notes before you start. First, your agent's session transcripts go up with your entry — the kit
+strips credentials, e-mail addresses and home paths before upload, but do not build an entry in a session
+where you pasted secrets. Second, a rejected entry still counts toward the day's entry limit, so run the
+local checks in step 5 before you submit, not after.
 
 ## Contents
 
@@ -23,6 +30,7 @@ This guide walks you from zero to your first submitted entry.
 - [3. Get the kit](#3-get-the-kit)
 - [4. Build your entry](#4-build-your-entry)
 - [5. Submit it](#5-submit-it)
+- [Common mistakes to avoid](#common-mistakes-to-avoid)
 - [6. Track it, fix it, resubmit](#6-track-it-fix-it-resubmit)
 - [7. Claim your reward](#7-claim-your-reward)
 - [Earn with your own referral link](#earn-with-your-own-referral-link)
@@ -78,7 +86,7 @@ The front page lists every bounty, sorted into Trending, New and Ending soon, wi
 - **Rewards**: what each paid place gets
 - **Phases**: when entries close and when the final results land
 
-Read the rules before you build. Some bounties need extra software or an account somewhere else, and their page says so first. A good first bounty is a small, free one with a clear task — you learn the whole loop (build, bundle, submit, check) without much at stake.
+Read the rules before you build. Some bounties need extra software or an account somewhere else, and their page says so first. A good first bounty is a small, free one with a clear task — you learn the whole loop (build, bundle, submit, check) without much at stake. If you want fast feedback, sort by Ending soon and pick one that closes in a day or two; if you want room to learn, pick one with a week left and no special software in its requirements.
 
 ## 3. Get the kit
 
@@ -133,6 +141,16 @@ node cli/makefun.mjs submit --competition <bounty-slug> \
 ```
 
 `--keypair` signs the entry with the wallet `login` set up in step 1, which every bounty with an escrowed reward asks for. That wallet is where the reward will be paid.
+
+## Common mistakes to avoid
+
+These are the rejections new entrants hit most often. All of them are cheap to avoid and expensive to fix after submitting:
+
+- **Starting the session before the bounty opens.** Only sessions that began at or after the opening count. Open a fresh agent session in the repo after you pick the bounty.
+- **Pasting code in from somewhere else.** The checks compare your transcripts against the code. Let your agent write the files in the session; pasted code counts as not yours.
+- **Forgetting the license.** An entry without an OSI-approved license (MIT is the easy one) is refused. Add the `LICENSE` file before your first commit.
+- **Submitting without running `check`.** A rejection still spends one of the day's entries. Run the local checks first — they are the same checks the server runs.
+- **A private repository, or the wrong owner.** The entry repository must be public and owned by the GitHub account linked to your make.fun account. A repo under another account, or a bundle instead of a repo where the bounty asks for a repo, is refused.
 
 ## 6. Track it, fix it, resubmit
 
